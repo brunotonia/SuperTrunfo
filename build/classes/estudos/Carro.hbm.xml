@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="estudos">
+
+    <class name="Carro" table="CARRO">
+        <meta attribute="class-description">
+            Detalhes da classe Carros
+        </meta>
+        <id name="id" type="long" column="ID">
+            <generator class="native"/>
+        </id>
+        <property name="nome" column="NOME" type="string" />
+        <property name="fabricante" column="FABRICANTE" type="string" />
+        <property name="pais" column="PAIS" type="string" />
+        <property name="potencia" column="POTENCIA" type="float" />
+        <property name="peso" column="PESO" type="float" />
+        <property name="velMaxima" column="VMAX" type="float" />
+        <property name="cilindros" column="CILINDROS" type="integer" />
+        <property name="cilindradas" column="CC" type="integer" />
+        <property name="anoFabricacao" column="ANO" type="integer" />
+        <property name="enderecoImagem" column="IMAGEM" type="string" />
+    </class>
+
+</hibernate-mapping>
