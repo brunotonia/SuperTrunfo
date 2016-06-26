@@ -1,6 +1,7 @@
 package estudos;
 
 import java.util.List;
+import javax.swing.JComboBox;
 
 public class Enciclopédia extends javax.swing.JFrame {
 
@@ -12,12 +13,11 @@ public class Enciclopédia extends javax.swing.JFrame {
         "Peso", "Velocidade Máxima", "Cilindros", "Cilindradas", "Ano de Fabricação",
         "Super Trunfo", "Not Null"};
     private String[] criterios = {"Igual à", "Diferente de", "Maior e igual à", "Maior que",
-        "Menor e igual à", "Menor que"};
+        "Menor e igual à", "Menor que", "Parecido com"};
 
     private void povoarCboxCategoria() {
         for (String aux : categorias) {
             cboxCategoria.addItem(aux);
-            cboxCriterios.setEnabled(false);
         }
     }
 
@@ -29,6 +29,17 @@ public class Enciclopédia extends javax.swing.JFrame {
 
     private void povoarTblCartas() {
         tblCartas.setModel(new JTableUtil().geraTabelaCartas(listaCartas));
+        if (!listaCartas.isEmpty()) {
+            tblCartas.getColumnModel().getColumn(0).setPreferredWidth(40);
+            tblCartas.getColumnModel().getColumn(1).setPreferredWidth(100);
+            tblCartas.getColumnModel().getColumn(2).setPreferredWidth(100);
+            tblCartas.getColumnModel().getColumn(3).setPreferredWidth(90);
+            tblCartas.getColumnModel().getColumn(4).setPreferredWidth(90);
+            tblCartas.getColumnModel().getColumn(5).setPreferredWidth(65);
+            tblCartas.getColumnModel().getColumn(6).setPreferredWidth(65);
+            tblCartas.getColumnModel().getColumn(7).setPreferredWidth(75);
+            tblCartas.getColumnModel().getColumn(8).setPreferredWidth(120);
+        }
         tblCartas.setColumnSelectionAllowed(false);
     }
 
@@ -89,13 +100,10 @@ public class Enciclopédia extends javax.swing.JFrame {
 
         tblCartas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1"
             }
         ));
         jScrollPane1.setViewportView(tblCartas);
@@ -109,15 +117,15 @@ public class Enciclopédia extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cboxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCategoria))
+                            .addComponent(lblCategoria)
+                            .addComponent(cboxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblTBusca)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(cboxCriterios, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cboxCriterios, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtBusca)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -126,9 +134,9 @@ public class Enciclopédia extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblEnciclopedia)
-                            .addComponent(lblResultados))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 594, Short.MAX_VALUE))
+                            .addComponent(lblResultados)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -141,13 +149,13 @@ public class Enciclopédia extends javax.swing.JFrame {
                     .addComponent(lblCategoria)
                     .addComponent(lblTBusca))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtBusca)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cboxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cboxCriterios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnBuscar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnBuscar))
+                    .addComponent(txtBusca))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblResultados)
@@ -169,14 +177,14 @@ public class Enciclopédia extends javax.swing.JFrame {
             cboxCriterios.setEnabled(true);
             txtBusca.setEnabled(true);
         }
+
     }//GEN-LAST:event_cboxCategoriaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
         String s = (String) cboxCategoria.getSelectedItem();
         String s2 = "";
-        /*{ "Todas", "Nome", "Fabricante", "Pais", "Potência",
-        "Peso", "Velocidade Máxima", "Cilindros", "Cilindradas", "Ano de Fabricação",
+        /*{"Potência", "Peso", "Velocidade Máxima", "Cilindros", "Cilindradas", "Ano de Fabricação",
         "Super Trunfo", "Not Null"};*/
         switch (s) {
             case "Todas":
@@ -186,8 +194,6 @@ public class Enciclopédia extends javax.swing.JFrame {
             case "Nome":
                 s2 = (String) cboxCriterios.getSelectedItem();
                 switch (s2) {
-                    /*{ "Igual à", "Diferente de", "Maior e igual à", "Maior que",
-        "Menor e igual à", "Menor que"};*/
                     case "Igual à":
                         listaCartas = cartaDAO.listarEquals("nome", txtBusca.getText().toUpperCase().toString());
                         break;
@@ -205,6 +211,90 @@ public class Enciclopédia extends javax.swing.JFrame {
                         break;
                     case "Menor que":
                         listaCartas = cartaDAO.listarLessThen("nome", txtBusca.getText().toUpperCase().toString());
+                        break;
+                    case "Parecido com":
+                        listaCartas = cartaDAO.listarIlike("nome", txtBusca.getText().toUpperCase().toString());
+                        break;
+                }
+                povoarTblCartas();
+                break;
+            case "Fabricante":
+                s2 = (String) cboxCriterios.getSelectedItem();
+                switch (s2) {
+                    case "Igual à":
+                        listaCartas = cartaDAO.listarEquals("fabricante", txtBusca.getText().toUpperCase().toString());
+                        break;
+                    case "Diferente de":
+                        listaCartas = cartaDAO.listarNotEquals("fabricante", txtBusca.getText().toUpperCase().toString());
+                        break;
+                    case "Maior e igual à":
+                        listaCartas = cartaDAO.listarGreaterEquals("fabricante", txtBusca.getText().toUpperCase().toString());
+                        break;
+                    case "Maior que":
+                        listaCartas = cartaDAO.listarGreaterThen("fabricante", txtBusca.getText().toUpperCase().toString());
+                        break;
+                    case "Menor e igual à":
+                        listaCartas = cartaDAO.listarLessEquals("fabricante", txtBusca.getText().toUpperCase().toString());
+                        break;
+                    case "Menor que":
+                        listaCartas = cartaDAO.listarLessThen("fabricante", txtBusca.getText().toUpperCase().toString());
+                        break;
+                    case "Parecido com":
+                        listaCartas = cartaDAO.listarIlike("fabricante", txtBusca.getText().toUpperCase().toString());
+                        break;
+                }
+                povoarTblCartas();
+                break;
+            case "Pais":
+                s2 = (String) cboxCriterios.getSelectedItem();
+                switch (s2) {
+                    case "Igual à":
+                        listaCartas = cartaDAO.listarEquals("pais", txtBusca.getText().toUpperCase().toString());
+                        break;
+                    case "Diferente de":
+                        listaCartas = cartaDAO.listarNotEquals("pais", txtBusca.getText().toUpperCase().toString());
+                        break;
+                    case "Maior e igual à":
+                        listaCartas = cartaDAO.listarGreaterEquals("pais", txtBusca.getText().toUpperCase().toString());
+                        break;
+                    case "Maior que":
+                        listaCartas = cartaDAO.listarGreaterThen("pais", txtBusca.getText().toUpperCase().toString());
+                        break;
+                    case "Menor e igual à":
+                        listaCartas = cartaDAO.listarLessEquals("pais", txtBusca.getText().toUpperCase().toString());
+                        break;
+                    case "Menor que":
+                        listaCartas = cartaDAO.listarLessThen("pais", txtBusca.getText().toUpperCase().toString());
+                        break;
+                    case "Parecido com":
+                        listaCartas = cartaDAO.listarIlike("pais", txtBusca.getText().toUpperCase().toString());
+                        break;
+                }
+                povoarTblCartas();
+                break;
+            case "Potência":
+                s2 = (String) cboxCriterios.getSelectedItem();
+                switch (s2) {
+                    case "Igual à":
+                        listaCartas = cartaDAO.listarEquals("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
+                        break;
+                    case "Diferente de":
+                        listaCartas = cartaDAO.listarNotEquals("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
+                        break;
+                    case "Maior e igual à":
+                        listaCartas = cartaDAO.listarGreaterEquals("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
+                        break;
+                    case "Maior que":
+                        listaCartas = cartaDAO.listarGreaterThen("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
+                        break;
+                    case "Menor e igual à":
+                        listaCartas = cartaDAO.listarLessEquals("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
+                        break;
+                    case "Menor que":
+                        listaCartas = cartaDAO.listarLessThen("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
+                        break;
+                    case "Parecido com":
+                        listaCartas = cartaDAO.listarIlike("potencia", txtBusca.getText().toUpperCase().toString());
                         break;
                 }
                 povoarTblCartas();
