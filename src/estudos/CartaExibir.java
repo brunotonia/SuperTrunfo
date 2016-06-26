@@ -33,6 +33,7 @@ public class CartaExibir extends javax.swing.JFrame {
         lblCilindradas.setText(carta.getCarro().getCilindradas().toString());
         lblAno.setText(carta.getCarro().getAnoFabricacao().toString());
         lblImg.setIcon(new ImageIcon(absolutePath + carta.getCarro().getEnderecoImagem()));
+        lblST.setVisible(carta.getSupertrunfo());
     }
 
     /**
@@ -82,6 +83,7 @@ public class CartaExibir extends javax.swing.JFrame {
         lblCilindradas = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         lblAno = new javax.swing.JLabel();
+        lblST = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Super Trunfo - Carta");
@@ -150,6 +152,10 @@ public class CartaExibir extends javax.swing.JFrame {
 
         lblAno.setText("Ano");
 
+        lblST.setForeground(new java.awt.Color(255, 0, 0));
+        lblST.setText("Super Trunfo");
+        lblST.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,11 +165,17 @@ public class CartaExibir extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCabecalho)
-                            .addComponent(lblImg, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(label1)
-                            .addComponent(label2)
-                            .addComponent(label3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblCabecalho)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblST))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblImg, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label1)
+                                    .addComponent(label2)
+                                    .addComponent(label3))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +212,9 @@ public class CartaExibir extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblCabecalho)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblCabecalho)
+                    .addComponent(lblST))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblImg, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -315,6 +329,7 @@ public class CartaExibir extends javax.swing.JFrame {
     private javax.swing.JLabel lblPais;
     private javax.swing.JLabel lblPeso;
     private javax.swing.JLabel lblPotencia;
+    private javax.swing.JLabel lblST;
     private javax.swing.JLabel lblVel;
     private javax.swing.JLabel lblVelocidade;
     // End of variables declaration//GEN-END:variables
