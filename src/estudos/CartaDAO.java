@@ -15,6 +15,20 @@ public class CartaDAO {
         session.close();
         return carta;
     }
+    
+    public List<Carta> listar() {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        Criteria criteriaCarta = session.createCriteria(Carta.class);
+        Criteria criteriaCarro = criteriaCarta.createCriteria("carro");
+        List<Carta> carroList = criteriaCarta.list();
+        // Remover for
+        for (Carta c : carroList) {
+            System.out.println(c.toString());
+        }
+        session.close();
+        return carroList;
+    }
 
     public List<Carta> listarIlike(String busca, String valor) {
         Session session = HibernateUtil.getSession();
@@ -291,7 +305,7 @@ public class CartaDAO {
         session.beginTransaction();
         Criteria criteriaCarta = session.createCriteria(Carta.class);
         Criteria criteriaCarro = criteriaCarta.createCriteria("carro");
-        criteriaCarro.add(Restrictions.ne(busca, valor));
+        criteriaCarro.add(Restrictions.ge(busca, valor));
         List<Carta> carroList = criteriaCarta.list();
         // Remover for
         for (Carta c : carroList) {
@@ -306,7 +320,7 @@ public class CartaDAO {
         session.beginTransaction();
         Criteria criteriaCarta = session.createCriteria(Carta.class);
         Criteria criteriaCarro = criteriaCarta.createCriteria("carro");
-        criteriaCarro.add(Restrictions.ne(busca, valor));
+        criteriaCarro.add(Restrictions.ge(busca, valor));
         List<Carta> carroList = criteriaCarta.list();
         // Remover for
         for (Carta c : carroList) {
@@ -321,7 +335,7 @@ public class CartaDAO {
         session.beginTransaction();
         Criteria criteriaCarta = session.createCriteria(Carta.class);
         Criteria criteriaCarro = criteriaCarta.createCriteria("carro");
-        criteriaCarro.add(Restrictions.ne(busca, valor));
+        criteriaCarro.add(Restrictions.ge(busca, valor));
         List<Carta> carroList = criteriaCarta.list();
         // Remover for
         for (Carta c : carroList) {
