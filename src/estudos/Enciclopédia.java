@@ -14,6 +14,7 @@ public class Enciclopédia extends javax.swing.JFrame {
         "Super Trunfo", "Not Null"};
     private final String[] criterios = {"Igual à", "Diferente de", "Maior e igual à", "Maior que",
         "Menor e igual à", "Menor que", "Parecido com"};
+    private Principal principal = null;
 
     private void povoarCboxCategoria() {
         for (String aux : categorias) {
@@ -40,6 +41,8 @@ public class Enciclopédia extends javax.swing.JFrame {
             tblCartas.getColumnModel().getColumn(7).setPreferredWidth(50);
             tblCartas.getColumnModel().getColumn(8).setPreferredWidth(65);
             tblCartas.getColumnModel().getColumn(9).setPreferredWidth(65);
+        } else {
+
         }
         tblCartas.setColumnSelectionAllowed(false);
     }
@@ -51,6 +54,14 @@ public class Enciclopédia extends javax.swing.JFrame {
         initComponents();
         povoarCboxCategoria();
         povoarCboxCriterios();
+    }
+    
+    public Enciclopédia(Principal principal) {
+        initComponents();
+        povoarCboxCategoria();
+        povoarCboxCriterios();
+        this.principal = principal;
+        principal.setVisible(false);
     }
 
     /**
@@ -73,9 +84,15 @@ public class Enciclopédia extends javax.swing.JFrame {
         lblResultados = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCartas = new javax.swing.JTable();
+        btnVisualizar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Super Trunfo - Enciclopédia");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         lblEnciclopedia.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         lblEnciclopedia.setText("Enciclopédia");
@@ -107,7 +124,19 @@ public class Enciclopédia extends javax.swing.JFrame {
                 "Title 1"
             }
         ));
+        tblCartas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCartasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblCartas);
+
+        btnVisualizar.setText("Visualizar Carta");
+        btnVisualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,12 +161,15 @@ public class Enciclopédia extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBuscar))))
                     .addComponent(jSeparator1)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblEnciclopedia)
                             .addComponent(lblResultados))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btnVisualizar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -156,13 +188,15 @@ public class Enciclopédia extends javax.swing.JFrame {
                         .addComponent(cboxCriterios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnBuscar))
                     .addComponent(txtBusca))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblResultados)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVisualizar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -410,7 +444,7 @@ public class Enciclopédia extends javax.swing.JFrame {
                         break;
                 }
                 break;
-                case "Ano de Fabricação":
+            case "Ano de Fabricação":
                 s2 = (String) cboxCriterios.getSelectedItem();
                 switch (s2) {
                     case "Igual à":
@@ -440,6 +474,25 @@ public class Enciclopédia extends javax.swing.JFrame {
         }
         povoarTblCartas();
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void tblCartasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCartasMouseClicked
+
+    }//GEN-LAST:event_tblCartasMouseClicked
+
+    private void btnVisualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizarActionPerformed
+        // TODO add your handling code here:
+        Integer i = tblCartas.getSelectedRow();
+        if (i != -1) {
+            Carta c = listaCartas.get(i);
+            System.out.println(c.toString());
+            new CartaExibir(this, c).setVisible(true);
+        }
+    }//GEN-LAST:event_btnVisualizarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+        principal.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
@@ -474,6 +527,7 @@ public class Enciclopédia extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnVisualizar;
     private javax.swing.JComboBox<String> cboxCategoria;
     private javax.swing.JComboBox<String> cboxCriterios;
     private javax.swing.JScrollPane jScrollPane1;

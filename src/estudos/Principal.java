@@ -92,6 +92,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void btnEnciclopediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnciclopediaActionPerformed
         // TODO add your handling code here:
+        new Enciclopédia(this).setVisible(true);
     }//GEN-LAST:event_btnEnciclopediaActionPerformed
 
     /**
