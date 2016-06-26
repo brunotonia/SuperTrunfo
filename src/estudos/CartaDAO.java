@@ -135,6 +135,20 @@ public class CartaDAO {
         return carroList;
     }
     
+    public List<Carta> listarEqualsCarta(String busca, Boolean valor) {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        Criteria criteriaCarta = session.createCriteria(Carta.class);
+        criteriaCarta.add(Restrictions.eq(busca, valor));
+        List<Carta> carroList = criteriaCarta.list();
+        // Remover for
+        for (Carta c : carroList) {
+            System.out.println(c.toString());
+        }
+        session.close();
+        return carroList;
+    }
+    
     public List<Carta> listarEquals(String busca, String valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
