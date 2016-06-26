@@ -25,7 +25,7 @@ public class CartaDAO {
         List<Carta> carroList = criteriaCarta.list();
         // Remover for
         for (Carta c : carroList) {
-            System.out.println(c.getCarro().getNome());
+            System.out.println(c.toString());
         }
         session.close();
         return carroList;
@@ -40,7 +40,7 @@ public class CartaDAO {
         List<Carta> carroList = criteriaCarta.list();
         // Remover for
         for (Carta c : carroList) {
-            System.out.println(c.getCarro().getNome());
+            System.out.println(c.toString());
         }
         session.close();
         return carroList;
@@ -55,7 +55,112 @@ public class CartaDAO {
         List<Carta> carroList = criteriaCarta.list();
         // Remover for
         for (Carta c : carroList) {
-            System.out.println(c.getCarro().getNome());
+            System.out.println(c.toString());
+        }
+        session.close();
+        return carroList;
+    }
+    
+    public List<Carta> listarSmallerThen(String busca, String valor) {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        Criteria criteriaCarta = session.createCriteria(Carta.class);
+        Criteria criteriaCarro = criteriaCarta.createCriteria("carro");
+        criteriaCarro.add(Restrictions.lt(busca, valor));
+        List<Carta> carroList = criteriaCarta.list();
+        // Remover for
+        for (Carta c : carroList) {
+            System.out.println(c.toString());
+        }
+        session.close();
+        return carroList;
+    }
+    
+    public List<Carta> listarSmallerThen(String busca, Float valor) {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        Criteria criteriaCarta = session.createCriteria(Carta.class);
+        Criteria criteriaCarro = criteriaCarta.createCriteria("carro");
+        criteriaCarro.add(Restrictions.lt(busca, valor));
+        List<Carta> carroList = criteriaCarta.list();
+        // Remover for
+        for (Carta c : carroList) {
+            System.out.println(c.toString());
+        }
+        session.close();
+        return carroList;
+    }
+    
+    public List<Carta> listarSmallerThen(String busca, Integer valor) {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        Criteria criteriaCarta = session.createCriteria(Carta.class);
+        Criteria criteriaCarro = criteriaCarta.createCriteria("carro");
+        criteriaCarro.add(Restrictions.lt(busca, valor));
+        List<Carta> carroList = criteriaCarta.list();
+        // Remover for
+        for (Carta c : carroList) {
+            System.out.println(c.toString());
+        }
+        session.close();
+        return carroList;
+    }
+    
+    public List<Carta> listarEquals(String busca, String valor) {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        Criteria criteriaCarta = session.createCriteria(Carta.class);
+        Criteria criteriaCarro = criteriaCarta.createCriteria("carro");
+        criteriaCarro.add(Restrictions.eq(busca, valor));
+        List<Carta> carroList = criteriaCarta.list();
+        // Remover for
+        for (Carta c : carroList) {
+            System.out.println(c.toString());
+        }
+        session.close();
+        return carroList;
+    }
+    
+    public List<Carta> listarEquals(String busca, Float valor) {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        Criteria criteriaCarta = session.createCriteria(Carta.class);
+        Criteria criteriaCarro = criteriaCarta.createCriteria("carro");
+        criteriaCarro.add(Restrictions.eq(busca, valor));
+        List<Carta> carroList = criteriaCarta.list();
+        // Remover for
+        for (Carta c : carroList) {
+            System.out.println(c.toString());
+        }
+        session.close();
+        return carroList;
+    }
+    
+    public List<Carta> listarEquals(String busca, Integer valor) {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        Criteria criteriaCarta = session.createCriteria(Carta.class);
+        Criteria criteriaCarro = criteriaCarta.createCriteria("carro");
+        criteriaCarro.add(Restrictions.eq(busca, valor));
+        List<Carta> carroList = criteriaCarta.list();
+        // Remover for
+        for (Carta c : carroList) {
+            System.out.println(c.toString());
+        }
+        session.close();
+        return carroList;
+    }
+    
+    public List<Carta> listarEquals(String busca, Boolean valor) {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        Criteria criteriaCarta = session.createCriteria(Carta.class);
+        Criteria criteriaCarro = criteriaCarta.createCriteria("carro");
+        criteriaCarro.add(Restrictions.eq(busca, valor));
+        List<Carta> carroList = criteriaCarta.list();
+        // Remover for
+        for (Carta c : carroList) {
+            System.out.println(c.toString());
         }
         session.close();
         return carroList;

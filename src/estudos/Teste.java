@@ -6,11 +6,6 @@
 package estudos;
 
 import java.util.List;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Restrictions;
 
 /**
  *
@@ -26,6 +21,8 @@ public class Teste {
         
         List<Carta> lista = new CartaDAO().listarIlike("nome", "919");
         lista = new CartaDAO().listarBiggerThen("potencia", 600.0F);
+        lista = new CartaDAO().listarSmallerThen("cilindros", 12);
+        lista = new CartaDAO().listarEquals("cilindros", 12);
         
 
     }

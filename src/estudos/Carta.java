@@ -92,4 +92,11 @@ public class Carta {
     public void setNumeroDerrotas(Integer numeroDerrotas) {
         this.numeroDerrotas = numeroDerrotas;
     }
+
+    @Override
+    public String toString() {
+        return numero + letra + " - " + carro.getFabricante() + " " + carro.getNome();
+    }
+    
+    
 }
