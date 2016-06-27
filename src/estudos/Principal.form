@@ -74,6 +74,9 @@
           <Image iconType="3" name="/resources/imagens/AudiQuattro.png"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImgMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnJogar">
       <Properties>

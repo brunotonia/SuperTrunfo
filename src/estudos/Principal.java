@@ -41,6 +41,11 @@ public class Principal extends javax.swing.JFrame {
         lblST.setText("Super Trunfo");
 
         lblImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/imagens/AudiQuattro.png"))); // NOI18N
+        lblImg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblImgMouseClicked(evt);
+            }
+        });
 
         btnJogar.setText("Jogar");
         btnJogar.setEnabled(false);
@@ -94,6 +99,10 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         new Enciclopédia(this).setVisible(true);
     }//GEN-LAST:event_btnEnciclopediaActionPerformed
+
+    private void lblImgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImgMouseClicked
+        new Cadastrar(this).setVisible(true);
+    }//GEN-LAST:event_lblImgMouseClicked
 
     /**
      * @param args the command line arguments

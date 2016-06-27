@@ -8,7 +8,7 @@
             Detalhes da classe Carros
         </meta>
         <id name="id" type="long" column="ID">
-            <generator class="native"/>
+            <generator class="identity"/>
         </id>
         <property name="nome" column="NOME" type="string" />
         <property name="fabricante" column="FABRICANTE" type="string" />

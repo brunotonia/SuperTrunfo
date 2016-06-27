@@ -8,14 +8,16 @@
             Detalhes da classe Carros
         </meta>
         <id name="id" type="long" column="ID">
-            <generator class="native"/>
+            <generator class="identity"/>
         </id>
         <property name="numero" column="NUMERO" type="integer" />
         <property name="letra" column="LETRA" type="string" />
         <property name="supertrunfo" column="SUPERTRUNFO" type="boolean" />
         <property name="selecionada" column="SELECIONADA" type="boolean" />
         <property name="descartada" column="DESCARTADA" type="boolean" />
-        <one-to-one name="carro" class="Carro" cascade="save-update"/>
+       
+        <many-to-one name="carro" class="Carro" cascade="save-update" fetch="select"/>
+        
         <property name="numeroVitorias" column="NUM_VITORIAS" type="integer" />
         <property name="numeroEmpates" column="NUM_EMPATES" type="integer" />
         <property name="numeroDerrotas" column="NUM_DERROTAS" type="integer" />
