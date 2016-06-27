@@ -1,7 +1,5 @@
 package estudos;
 
-import java.net.URL;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /*
@@ -18,7 +16,7 @@ public class CartaExibir extends javax.swing.JFrame {
     
     private Enciclopédia enciclopedia = null;
     private Carta carta = null;
-    private String absolutePath = "/home/bruno/Projetos/NetBeans/TP2 - SuperTrunfo/src/resources/imagens/";
+    private String absolutePath = "";
     
     private void carregaCarta() {
         lblCabecalho.setText(carta.getNumero() + carta.getLetra() + " - " + 
