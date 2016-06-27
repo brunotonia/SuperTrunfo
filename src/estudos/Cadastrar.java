@@ -276,7 +276,7 @@ public class Cadastrar extends javax.swing.JFrame {
         Carro carro = new Carro();
         
         //carta.setId(Long.valueOf(txt_id.getText()));
-        carta.setLetra(txt_letra.getText());
+        carta.setLetra(txt_letra.getText().toUpperCase());
         carta.setNumero(Integer.parseInt(txt_numero.getText()));
         carta.setSupertrunfo(chk_trunfo.isSelected());
         carta.setDescartada(false);
@@ -285,9 +285,9 @@ public class Cadastrar extends javax.swing.JFrame {
         carta.setNumeroEmpates(0);
         carta.setNumeroVitorias(0);
         //carro.setId(Long.valueOf(txt_carroId.getText()));
-        carro.setNome(txt_nome.getText());
-        carro.setFabricante(txt_fabricante.getText());
-        carro.setPais(txt_pais.getText());
+        carro.setNome(txt_nome.getText().toUpperCase());
+        carro.setFabricante(txt_fabricante.getText().toUpperCase());
+        carro.setPais(txt_pais.getText().toUpperCase());
         carro.setPotencia(Float.valueOf(txt_potencia.getText()));
         carro.setPeso(Float.valueOf(txt_peso.getText()));
         carro.setVelMaxima(Float.valueOf(txt_velMax.getText()));
@@ -296,7 +296,10 @@ public class Cadastrar extends javax.swing.JFrame {
         carro.setAnoFabricacao(Integer.parseInt(txt_ano.getText()));
         carro.setEnderecoImagem(txt_img.getText());
         carta.setCarro(carro);
-        if (new CartaDAO().cadastrar(carta)) {
+        CartaDAO cartaDAO = new CartaDAO();
+        boolean resultado = cartaDAO.cadastrar(carta);
+        System.out.println(resultado);
+        if (resultado) {
             JOptionPane.showMessageDialog(null, "Carta cadastrada com sucesso", "Aviso", 1);
             this.dispose();
         } else {

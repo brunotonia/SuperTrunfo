@@ -2,6 +2,7 @@ package estudos;
 
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
@@ -15,12 +16,11 @@ public class CartaDAO {
         session.close();
         return carta;
     }
-    
+
     public List<Carta> listar() {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
         Criteria criteriaCarta = session.createCriteria(Carta.class);
-        Criteria criteriaCarro = criteriaCarta.createCriteria("carro");
         List<Carta> carroList = criteriaCarta.list();
         // Remover for
         for (Carta c : carroList) {
@@ -44,7 +44,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarGreaterThen(String busca, String valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -59,7 +59,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarGreaterThen(String busca, Float valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -74,7 +74,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarGreaterThen(String busca, Integer valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -89,7 +89,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarLessThen(String busca, String valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -104,7 +104,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarLessThen(String busca, Float valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -119,7 +119,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarLessThen(String busca, Integer valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -134,7 +134,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarEqualsCarta(String busca, Boolean valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -148,7 +148,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarEquals(String busca, String valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -163,7 +163,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarEquals(String busca, Float valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -178,7 +178,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarEquals(String busca, Integer valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -193,7 +193,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarEquals(String busca, Boolean valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -208,7 +208,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarNotEquals(String busca, String valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -223,7 +223,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarNotEquals(String busca, Float valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -238,7 +238,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarNotEquals(String busca, Integer valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -253,7 +253,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarNotEquals(String busca, Boolean valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -268,7 +268,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarLessEquals(String busca, String valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -283,7 +283,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarLessEquals(String busca, Float valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -298,7 +298,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarLessEquals(String busca, Integer valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -313,7 +313,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarGreaterEquals(String busca, String valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -328,7 +328,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarGreaterEquals(String busca, Float valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -343,7 +343,7 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
+
     public List<Carta> listarGreaterEquals(String busca, Integer valor) {
         Session session = HibernateUtil.getSession();
         session.beginTransaction();
@@ -373,21 +373,16 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
-    
-    public Boolean cadastrar(Carta carta)
-    {
-        try
-        {
-            Session session = HibernateUtil.getSession();
-            session.beginTransaction();
-            session.save(carta);
-            session.getTransaction().commit();
-            session.close();
-            return true;
-        }
-        catch(Exception e)
-        {
-            System.out.println(e.toString());
+
+    public Boolean cadastrar(Carta carta) {
+        try {
+        Session session = HibernateUtil.getSession();
+        session.beginTransaction();
+        session.save(carta);
+        session.getTransaction().commit();
+        return true;
+        } catch (HibernateException e) {
+            e.printStackTrace();
             return false;
         }
     }
