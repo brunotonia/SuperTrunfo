@@ -373,4 +373,22 @@ public class CartaDAO {
         session.close();
         return carroList;
     }
+    
+    public Boolean cadastrar(Carta carta)
+    {
+        try
+        {
+            Session session = HibernateUtil.getSession();
+            session.beginTransaction();
+            session.save(carta);
+            session.getTransaction().commit();
+            session.close();
+            return true;
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.toString());
+            return false;
+        }
+    }
 }
