@@ -55,7 +55,7 @@ public class Enciclopédia extends javax.swing.JFrame {
         povoarCboxCategoria();
         povoarCboxCriterios();
     }
-    
+
     public Enciclopédia(Principal principal) {
         initComponents();
         povoarCboxCategoria();
@@ -205,13 +205,21 @@ public class Enciclopédia extends javax.swing.JFrame {
     private void cboxCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxCategoriaActionPerformed
         // TODO add your handling code here:
         String s = (String) cboxCategoria.getSelectedItem();
+        //if (s.equals("Todas") || s.equals("Not Null") || s.equals("Super Trunfo")) {
+       
+        
         if (s.equals("Todas") || s.equals("Not Null") || s.equals("Super Trunfo")) {
-            cboxCriterios.setEnabled(false);
-            txtBusca.setEnabled(false);
+             txtBusca.setEnabled(false);
+             cboxCriterios.setEnabled(false);
+            if (s.equals("Not Null")) {
+                JOptionPane.showMessageDialog(null, "Critérios de busca aceitos: \n\'nome\', \'fabricante\', \'potencia\', ", "Aviso", 1);
+                txtBusca.setEnabled(true);
+            }
         } else {
             cboxCriterios.setEnabled(true);
             txtBusca.setEnabled(true);
         }
+
     }//GEN-LAST:event_cboxCategoriaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -225,7 +233,7 @@ public class Enciclopédia extends javax.swing.JFrame {
                 listaCartas = cartaDAO.listar();
                 break;
             case "Not Null":
-                s2 = (String) cboxCriterios.getSelectedItem();
+                s2 = txtBusca.getText();
                 listaCartas = cartaDAO.listarNotNull(s2);
                 break;
             case "Super Trunfo":

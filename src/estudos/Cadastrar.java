@@ -298,7 +298,6 @@ public class Cadastrar extends javax.swing.JFrame {
         carta.setCarro(carro);
         CartaDAO cartaDAO = new CartaDAO();
         boolean resultado = cartaDAO.cadastrar(carta);
-        System.out.println(resultado);
         if (resultado) {
             JOptionPane.showMessageDialog(null, "Carta cadastrada com sucesso", "Aviso", 1);
             this.dispose();

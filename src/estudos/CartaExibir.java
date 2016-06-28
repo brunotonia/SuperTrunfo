@@ -16,7 +16,6 @@ public class CartaExibir extends javax.swing.JFrame {
     
     private Enciclopédia enciclopedia = null;
     private Carta carta = null;
-    private String absolutePath = "";
     
     private void carregaCarta() {
         lblCabecalho.setText(carta.getNumero() + carta.getLetra() + " - " + 
@@ -30,7 +29,7 @@ public class CartaExibir extends javax.swing.JFrame {
         lblCilindros.setText(carta.getCarro().getCilindros().toString());
         lblCilindradas.setText(carta.getCarro().getCilindradas().toString());
         lblAno.setText(carta.getCarro().getAnoFabricacao().toString());
-        lblImg.setIcon(new ImageIcon(absolutePath + carta.getCarro().getEnderecoImagem()));
+        lblImg.setIcon(new ImageIcon(carta.getCarro().getEnderecoImagem()));
         lblST.setVisible(carta.getSupertrunfo());
     }
 
