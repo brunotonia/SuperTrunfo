@@ -13,7 +13,7 @@ public class HibernateUtil {
             Configuration cfg = new Configuration();
             cfg.setProperty("hibernate.connection.driver_class", "org.postgresql.Driver");
             cfg.setProperty("hibernate.connection.username", "bruno");
-            //cfg.setProperty("hibernate.connection.password", "angra1");
+            cfg.setProperty("hibernate.connection.password", "angra1");
             cfg.setProperty("hibernate.connection.url", "jdbc:postgresql:supertrunfo");
             cfg.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
             cfg.setProperty("hibernate.current_session_context_class", "thread");
