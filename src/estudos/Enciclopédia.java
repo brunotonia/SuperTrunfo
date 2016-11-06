@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 public class Enciclopédia extends javax.swing.JFrame {
 
     /* Variáveis de Sessão */
-    private List<Carta> listaCartas = null;
+    private List<Carta> lista = null;
     private final CartaDAO cartaDAO = new CartaDAO();
     private Principal telaAnterior;
     private final String[] categorias = {"Todas", "Nome", "Fabricante", "Pais", "Potência",
@@ -29,8 +29,8 @@ public class Enciclopédia extends javax.swing.JFrame {
     }
 
     private void povoarTblCartas() {
-        tblCartas.setModel(new JTableUtil().geraTabelaCartas(listaCartas));
-        if (listaCartas != null) {
+        tblCartas.setModel(new JTableUtil().geraTabelaCartas(lista));
+        if (lista != null) {
             tblCartas.getColumnModel().getColumn(0).setPreferredWidth(40);
             tblCartas.getColumnModel().getColumn(1).setPreferredWidth(90);
             tblCartas.getColumnModel().getColumn(2).setPreferredWidth(80);
@@ -230,38 +230,38 @@ public class Enciclopédia extends javax.swing.JFrame {
         "Super Trunfo", "Not Null"};*/
         switch (s) {
             case "Todas":
-                listaCartas = cartaDAO.listar();
+                lista = cartaDAO.listar();
                 break;
             case "Not Null":
                 s2 = txtBusca.getText();
-                listaCartas = cartaDAO.listarNotNull(s2);
+                lista = cartaDAO.listarNotNull(s2);
                 break;
             case "Super Trunfo":
-                listaCartas = cartaDAO.listarEqualsCarta("supertrunfo", true);
+                lista = cartaDAO.listarEqualsCarta("supertrunfo", true);
                 break;
             case "Nome":
                 s2 = (String) cboxCriterios.getSelectedItem();
                 switch (s2) {
                     case "Igual à":
-                        listaCartas = cartaDAO.listarEquals("nome", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarEquals("nome", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Diferente de":
-                        listaCartas = cartaDAO.listarNotEquals("nome", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarNotEquals("nome", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Maior e igual à":
-                        listaCartas = cartaDAO.listarGreaterEquals("nome", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarGreaterEquals("nome", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Maior que":
-                        listaCartas = cartaDAO.listarGreaterThen("nome", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarGreaterThen("nome", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Menor e igual à":
-                        listaCartas = cartaDAO.listarLessEquals("nome", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarLessEquals("nome", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Menor que":
-                        listaCartas = cartaDAO.listarLessThen("nome", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarLessThen("nome", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Parecido com":
-                        listaCartas = cartaDAO.listarIlike("nome", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarIlike("nome", txtBusca.getText().toUpperCase().toString());
                         break;
                 }
                 break;
@@ -269,25 +269,25 @@ public class Enciclopédia extends javax.swing.JFrame {
                 s2 = (String) cboxCriterios.getSelectedItem();
                 switch (s2) {
                     case "Igual à":
-                        listaCartas = cartaDAO.listarEquals("fabricante", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarEquals("fabricante", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Diferente de":
-                        listaCartas = cartaDAO.listarNotEquals("fabricante", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarNotEquals("fabricante", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Maior e igual à":
-                        listaCartas = cartaDAO.listarGreaterEquals("fabricante", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarGreaterEquals("fabricante", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Maior que":
-                        listaCartas = cartaDAO.listarGreaterThen("fabricante", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarGreaterThen("fabricante", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Menor e igual à":
-                        listaCartas = cartaDAO.listarLessEquals("fabricante", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarLessEquals("fabricante", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Menor que":
-                        listaCartas = cartaDAO.listarLessThen("fabricante", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarLessThen("fabricante", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Parecido com":
-                        listaCartas = cartaDAO.listarIlike("fabricante", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarIlike("fabricante", txtBusca.getText().toUpperCase().toString());
                         break;
                 }
                 break;
@@ -295,25 +295,25 @@ public class Enciclopédia extends javax.swing.JFrame {
                 s2 = (String) cboxCriterios.getSelectedItem();
                 switch (s2) {
                     case "Igual à":
-                        listaCartas = cartaDAO.listarEquals("pais", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarEquals("pais", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Diferente de":
-                        listaCartas = cartaDAO.listarNotEquals("pais", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarNotEquals("pais", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Maior e igual à":
-                        listaCartas = cartaDAO.listarGreaterEquals("pais", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarGreaterEquals("pais", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Maior que":
-                        listaCartas = cartaDAO.listarGreaterThen("pais", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarGreaterThen("pais", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Menor e igual à":
-                        listaCartas = cartaDAO.listarLessEquals("pais", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarLessEquals("pais", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Menor que":
-                        listaCartas = cartaDAO.listarLessThen("pais", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarLessThen("pais", txtBusca.getText().toUpperCase().toString());
                         break;
                     case "Parecido com":
-                        listaCartas = cartaDAO.listarIlike("pais", txtBusca.getText().toUpperCase().toString());
+                        lista = cartaDAO.listarIlike("pais", txtBusca.getText().toUpperCase().toString());
                         break;
                 }
                 break;
@@ -321,25 +321,25 @@ public class Enciclopédia extends javax.swing.JFrame {
                 s2 = (String) cboxCriterios.getSelectedItem();
                 switch (s2) {
                     case "Igual à":
-                        listaCartas = cartaDAO.listarEquals("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarEquals("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Diferente de":
-                        listaCartas = cartaDAO.listarNotEquals("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarNotEquals("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Maior e igual à":
-                        listaCartas = cartaDAO.listarGreaterEquals("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarGreaterEquals("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Maior que":
-                        listaCartas = cartaDAO.listarGreaterThen("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarGreaterThen("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Menor e igual à":
-                        listaCartas = cartaDAO.listarLessEquals("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarLessEquals("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Menor que":
-                        listaCartas = cartaDAO.listarLessThen("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarLessThen("potencia", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Parecido com":
-                        listaCartas = null;
+                        lista = null;
                         JOptionPane.showMessageDialog(null, "Critério \"" + s2 + "\" não pode ser utilizado para\ncomparar a categoria \"" + s + "\"", "Aviso", 1);
                         break;
                 }
@@ -348,25 +348,25 @@ public class Enciclopédia extends javax.swing.JFrame {
                 s2 = (String) cboxCriterios.getSelectedItem();
                 switch (s2) {
                     case "Igual à":
-                        listaCartas = cartaDAO.listarEquals("peso", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarEquals("peso", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Diferente de":
-                        listaCartas = cartaDAO.listarNotEquals("peso", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarNotEquals("peso", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Maior e igual à":
-                        listaCartas = cartaDAO.listarGreaterEquals("peso", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarGreaterEquals("peso", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Maior que":
-                        listaCartas = cartaDAO.listarGreaterThen("peso", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarGreaterThen("peso", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Menor e igual à":
-                        listaCartas = cartaDAO.listarLessEquals("peso", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarLessEquals("peso", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Menor que":
-                        listaCartas = cartaDAO.listarLessThen("peso", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarLessThen("peso", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Parecido com":
-                        listaCartas = null;
+                        lista = null;
                         JOptionPane.showMessageDialog(null, "Critério \"" + s2 + "\" não pode ser utilizado para\ncomparar a categoria \"" + s + "\"", "Aviso", 1);
                         break;
                 }
@@ -375,25 +375,25 @@ public class Enciclopédia extends javax.swing.JFrame {
                 s2 = (String) cboxCriterios.getSelectedItem();
                 switch (s2) {
                     case "Igual à":
-                        listaCartas = cartaDAO.listarEquals("velMaxima", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarEquals("velMaxima", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Diferente de":
-                        listaCartas = cartaDAO.listarNotEquals("velMaxima", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarNotEquals("velMaxima", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Maior e igual à":
-                        listaCartas = cartaDAO.listarGreaterEquals("velMaxima", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarGreaterEquals("velMaxima", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Maior que":
-                        listaCartas = cartaDAO.listarGreaterThen("velMaxima", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarGreaterThen("velMaxima", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Menor e igual à":
-                        listaCartas = cartaDAO.listarLessEquals("velMaxima", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarLessEquals("velMaxima", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Menor que":
-                        listaCartas = cartaDAO.listarLessThen("velMaxima", new Float(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarLessThen("velMaxima", new Float(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Parecido com":
-                        listaCartas = null;
+                        lista = null;
                         JOptionPane.showMessageDialog(null, "Critério \"" + s2 + "\" não pode ser utilizado para\ncomparar a categoria \"" + s + "\"", "Aviso", 1);
                         break;
                 }
@@ -402,25 +402,25 @@ public class Enciclopédia extends javax.swing.JFrame {
                 s2 = (String) cboxCriterios.getSelectedItem();
                 switch (s2) {
                     case "Igual à":
-                        listaCartas = cartaDAO.listarEquals("cilindros", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarEquals("cilindros", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Diferente de":
-                        listaCartas = cartaDAO.listarNotEquals("cilindros", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarNotEquals("cilindros", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Maior e igual à":
-                        listaCartas = cartaDAO.listarGreaterEquals("cilindros", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarGreaterEquals("cilindros", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Maior que":
-                        listaCartas = cartaDAO.listarGreaterThen("cilindros", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarGreaterThen("cilindros", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Menor e igual à":
-                        listaCartas = cartaDAO.listarLessEquals("cilindros", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarLessEquals("cilindros", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Menor que":
-                        listaCartas = cartaDAO.listarLessThen("cilindros", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarLessThen("cilindros", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Parecido com":
-                        listaCartas = null;
+                        lista = null;
                         JOptionPane.showMessageDialog(null, "Critério \"" + s2 + "\" não pode ser utilizado para\ncomparar a categoria \"" + s + "\"", "Aviso", 1);
                         break;
                 }
@@ -429,25 +429,25 @@ public class Enciclopédia extends javax.swing.JFrame {
                 s2 = (String) cboxCriterios.getSelectedItem();
                 switch (s2) {
                     case "Igual à":
-                        listaCartas = cartaDAO.listarEquals("cilindradas", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarEquals("cilindradas", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Diferente de":
-                        listaCartas = cartaDAO.listarNotEquals("cilindradas", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarNotEquals("cilindradas", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Maior e igual à":
-                        listaCartas = cartaDAO.listarGreaterEquals("cilindradas", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarGreaterEquals("cilindradas", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Maior que":
-                        listaCartas = cartaDAO.listarGreaterThen("cilindradas", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarGreaterThen("cilindradas", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Menor e igual à":
-                        listaCartas = cartaDAO.listarLessEquals("cilindradas", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarLessEquals("cilindradas", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Menor que":
-                        listaCartas = cartaDAO.listarLessThen("cilindradas", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarLessThen("cilindradas", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Parecido com":
-                        listaCartas = null;
+                        lista = null;
                         JOptionPane.showMessageDialog(null, "Critério \"" + s2 + "\" não pode ser utilizado para\ncomparar a categoria \"" + s + "\"", "Aviso", 1);
                         break;
                 }
@@ -456,25 +456,25 @@ public class Enciclopédia extends javax.swing.JFrame {
                 s2 = (String) cboxCriterios.getSelectedItem();
                 switch (s2) {
                     case "Igual à":
-                        listaCartas = cartaDAO.listarEquals("anoFabricacao", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarEquals("anoFabricacao", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Diferente de":
-                        listaCartas = cartaDAO.listarNotEquals("anoFabricacao", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarNotEquals("anoFabricacao", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Maior e igual à":
-                        listaCartas = cartaDAO.listarGreaterEquals("anoFabricacao", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarGreaterEquals("anoFabricacao", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Maior que":
-                        listaCartas = cartaDAO.listarGreaterThen("anoFabricacao", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarGreaterThen("anoFabricacao", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Menor e igual à":
-                        listaCartas = cartaDAO.listarLessEquals("anoFabricacao", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarLessEquals("anoFabricacao", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Menor que":
-                        listaCartas = cartaDAO.listarLessThen("anoFabricacao", new Integer(txtBusca.getText().toUpperCase().toString()));
+                        lista = cartaDAO.listarLessThen("anoFabricacao", new Integer(txtBusca.getText().toUpperCase().toString()));
                         break;
                     case "Parecido com":
-                        listaCartas = null;
+                        lista = null;
                         JOptionPane.showMessageDialog(null, "Critério \"" + s2 + "\" não pode ser utilizado para\ncomparar a categoria \"" + s + "\"", "Aviso", 1);
                         break;
                 }
@@ -491,7 +491,7 @@ public class Enciclopédia extends javax.swing.JFrame {
         // TODO add your handling code here:
         Integer i = tblCartas.getSelectedRow();
         if (i != -1) {
-            Carta c = listaCartas.get(i);
+            Carta c = lista.get(i);
             System.out.println(c.toString());
             new CartaExibir(this, c).setVisible(true);
         }

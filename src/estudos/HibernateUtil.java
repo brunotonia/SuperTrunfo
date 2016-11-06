@@ -16,8 +16,8 @@ public class HibernateUtil {
             cfg.setProperty("hibernate.connection.password", "angra1");
             cfg.setProperty("hibernate.connection.url", "jdbc:postgresql:supertrunfo");
             cfg.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
-            cfg.setProperty("hibernate.current_session_context_class", "thread");
-            cfg.setProperty("hibernate.show_sql", "true");
+            cfg.setProperty("hibernate.current_session_context_class", "thread");//
+            cfg.setProperty("hibernate.show_sql", "true");//
             cfg.addClass(Carro.class);
             cfg.addClass(Carta.class);
             sf = cfg.buildSessionFactory();
